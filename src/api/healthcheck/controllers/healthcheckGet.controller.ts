@@ -1,6 +1,16 @@
-// @ts-check
+import {
+  Controller,
+  Example,
+  Get,
+  OperationId,
+  Route,
+  SuccessResponse,
+  Tags
+} from 'tsoa'
 
-import { Controller, Example, Get, OperationId, Route, SuccessResponse, Tags } from 'tsoa'
+interface healthcheckData {
+  data: string
+}
 
 @Route('/')
 @Tags('healthcheck')
@@ -8,14 +18,11 @@ export class healthcheckGetController extends Controller {
   /**
    * Get healthcheck
    */
-  // @SuccessResponse('200', 'success')
-  @Get('/healthcheck')
+  @Example({ data: 'Service is up and healthy /healthcheck' }, 'GET healthcheck')
+  @SuccessResponse(200, 'success')
   @OperationId('healthcheckGetController')
-  @Example({
-    status: 200,
-    data: `Service is up and healthy /healthcheck`
-  })
-  static handler () {
+  @Get('/healthcheck')
+  static handler (): healthcheckData {
     return {
       data: `Service is up and healthy /healthcheck`
     }

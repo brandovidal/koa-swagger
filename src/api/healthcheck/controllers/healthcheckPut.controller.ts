@@ -1,6 +1,11 @@
-// @ts-check
-
-import { Controller, OperationId, Put, Route, SuccessResponse, Tags } from 'tsoa'
+import {
+  Controller,
+  OperationId,
+  Put,
+  Route,
+  SuccessResponse,
+  Tags
+} from 'tsoa'
 
 @Route('/')
 @Tags('healthcheck')
@@ -8,7 +13,7 @@ export class healthcheckPutController extends Controller {
   /**
    * Put healthcheck
    */
-  @SuccessResponse('204')
+  @SuccessResponse('204', 'success')
   @Put('/healthcheck')
   @OperationId('healthcheckPutController')
   static handler () {

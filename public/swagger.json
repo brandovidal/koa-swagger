@@ -6,7 +6,20 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"ResponseData": {
+				"properties": {
+					"data": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
 		"securitySchemes": {}
 	},
 	"info": {
@@ -23,7 +36,7 @@
 				"operationId": "healthcheckPutController",
 				"responses": {
 					"204": {
-						"description": "",
+						"description": "success",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56,20 +69,11 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"data": {
-											"type": "string"
-										}
-									},
-									"required": [
-										"data"
-									],
-									"type": "object"
+									"$ref": "#/components/schemas/ResponseData"
 								},
 								"examples": {
-									"Example 1": {
+									"Get healthcheck": {
 										"value": {
-											"status": 200,
 											"data": "Service is up and healthy /healthcheck"
 										}
 									}

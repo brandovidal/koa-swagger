@@ -11,7 +11,6 @@ const __dirname = dirname('./')
 const staticPath = join(__dirname, 'public')
 app.use(serve(staticPath))
 
-// app.use(healthcheck.routes())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
